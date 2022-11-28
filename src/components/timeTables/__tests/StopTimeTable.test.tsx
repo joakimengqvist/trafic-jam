@@ -1,11 +1,10 @@
 /**
  * @jest-environment jsdom
  */
+// @ts-nocheck
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-
-// @ts-nocheck
 
 import StopTimeTable from '../StopPlaceTimeInfo';
 
