@@ -5,25 +5,37 @@ const service = createEnturService({
   clientName: 'gjensidige-codeinterviewtest'
 });
 
-interface PromiseQueueObject {
-  number: number,
-  request: Promise<object>
-}
-
 interface StateObject {
-  promiseQueue: Array<PromiseQueueObject>,
-  promiseCount: number,
-  resetCycle: boolean,
+  promiseQueue: Array<PromiseQueueObject>
+  promiseCount: number
+  resetCycle: boolean
 }
 
-interface EventObject {
-  type: string,
-  request: Promise<Object>,
+interface PromiseQueueObject {
+  number: number
+  request: Promise<any>
 }
 
-const reducer = (state : StateObject, event : EventObject) => {
+const EventTypes = {
+  ADD_REQUEST: 'ADD_REQUEST',
+  RESET_REQUESTS: 'RESET_REQUESTS'
+};
+
+interface AddRequestAction {
+  type: typeof EventTypes.ADD_REQUEST
+  request: any
+};
+
+interface ResetRequestAction {
+  type: typeof EventTypes.RESET_REQUESTS
+  request: any
+};
+
+type Actions = AddRequestAction | ResetRequestAction;
+
+const reducer = (state : StateObject, event : Actions) : StateObject => {
   switch(event.type) {
-    case 'ADD_REQUEST': {
+    case EventTypes.ADD_REQUEST: {
       const _promiseCount = state.promiseCount + 1;
         if (state.promiseQueue[state.promiseQueue.length - 1].number < _promiseCount) {
           state.promiseQueue.push({ number: _promiseCount, request: event.request });
@@ -33,7 +45,7 @@ const reducer = (state : StateObject, event : EventObject) => {
           promiseCount: _promiseCount,
         }
       }
-    case 'RESET_REQUESTS':
+    case EventTypes.RESET_REQUESTS:
       if (state.promiseCount > 1) {
         return {
           ...state,
@@ -61,14 +73,14 @@ const firstRequestPromise = new Promise((resolve) => {
     .then(response => resolve(response));
 });
 
-const initialState = {
+const initialState : StateObject = {
   resetCycle: false,
   promiseCount: 1,
   promiseQueue: [{ number: 1, request: firstRequestPromise}],
 }
 
 export const useRequestPipeline = () => {
-  const [{ ...state }, dispatch] = useReducer(reducer, initialState);
+  const [state , dispatch] = useReducer(reducer, initialState);
 
   const requestPromise = new Promise((resolve) => {
     service.getDeparturesFromStopPlace('NSR:StopPlace:4000', {
