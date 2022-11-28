@@ -1,3 +1,5 @@
+import React from 'react';
+
 interface ArrivalComponentProps {
   aimedArrival: string,
   expectedArrival: string,
@@ -10,9 +12,9 @@ const ExpectedArrival = ({ aimedArrival, expectedArrival }: ArrivalComponentProp
   const expectedArrivalDate = new Date(expectedArrival);
 
   if (expectedArrivalDate > aimedArrivalDate) {
-    return <p>{expectedArrivalDate.toLocaleTimeString()} - <span style={{color: 'coral'}}>Delayed</span></p>
+    return <p data-testid="expectedArrival">{expectedArrivalDate.toLocaleTimeString()} - <span data-testid="expectedArrivalDelay" style={{color: 'coral'}}>Delayed</span></p>
   } else {
-    return <p>{expectedArrivalDate.toLocaleTimeString()}</p>
+    return <p data-testid="expectedArrival">{expectedArrivalDate.toLocaleTimeString()}</p>
   }
 }
 

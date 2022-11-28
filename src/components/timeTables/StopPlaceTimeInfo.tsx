@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import React from 'react';
 import { EstimatedCall } from '../../__generated__/graphql';
 import StopTimeTable from './StopTimeTable';
 

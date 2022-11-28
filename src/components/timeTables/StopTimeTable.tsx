@@ -1,5 +1,5 @@
-import { memo } from 'react';
 import React from 'react';
+import { memo } from 'react';
 import Table from 'react-bootstrap/Table';
 import { EstimatedCall } from '../../__generated__/graphql';
 import ExpectedArrival from '../time/ExpectedArrival';
