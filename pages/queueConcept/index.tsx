@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useEffect, useState } from 'react';
 import { useRequestPipeline } from '../../src/requestPipeline/requestConceptPipeline';
 
@@ -5,7 +6,6 @@ const Stop = () => {
   const [numberOfRuns, setNumberOfRuns] = useState(0);
   const [lastResult, setLastResult] = useState('');
   const [state, dispatch] = useRequestPipeline();
-
   useEffect(() => {
     const fetchData = async () => {
       await state.promiseQueue[0].request.then((response : any) => {

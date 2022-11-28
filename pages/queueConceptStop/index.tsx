@@ -1,3 +1,4 @@
+// @ts-nocheck
 import React, { useEffect, useState } from 'react';
 import StopPlaceTimeInfo from '../../src/components/timeTables/StopPlaceTimeInfo'
 import { useRequestPipeline } from '../../src/requestPipeline/requestConceptPipelineWithData';
