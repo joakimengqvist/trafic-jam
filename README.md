@@ -7,7 +7,7 @@ yarn dev
 
 ```
 
-## Things I am not pleased with (short on time) :D
+# Things I am not pleased with (short on time) :D
 
 - Tests are very simple.
 - Some unecesarry duplication of code (request cycles mostly).
