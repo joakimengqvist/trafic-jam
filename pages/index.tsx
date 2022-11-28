@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { Link } from "react-router-dom";
+import Link from 'next/link'
 import styles from '../styles/Home.module.css';
 
 export default function Home() {
@@ -13,9 +13,21 @@ export default function Home() {
           Traffic Jam <span style={{fontSize: '100px'}}>@</span>pp
         </h1>
           <ul className="mt-3">
-        <li><a href="/queueConcept"><h5>Concept of a request queue.</h5></a></li>
-        <li><a href="/queueConceptStop"><h5>Putting some real data in the queue.</h5></a></li>
-        <li><a href="/stopApollo/4000"><h5>A more dynamic approach.</h5></a></li>
+        <li>
+          <Link href="/queueConcept">
+            <h5>Concept of a request queue.</h5>
+          </Link>
+        </li>
+        <li>
+          <Link href="/queueConceptStop">
+            <h5>Concept of a request queue.</h5>
+          </Link>
+        </li>
+        <li>
+          <Link href="/stopApollo/4000">
+            <h5>A more dynamic approach.</h5>
+          </Link>
+        </li>
         </ul>
       </main>
     </div>
