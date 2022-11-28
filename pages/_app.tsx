@@ -32,11 +32,11 @@ const client = new ApolloClient({
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
-    <Provider store={store}>
-      <ApolloProvider client={client}>
-        <Component {...pageProps} />
-      </ApolloProvider>
-    </Provider>
+        <Provider store={store}>
+          <ApolloProvider client={client}>
+            <Component {...pageProps} />
+          </ApolloProvider>
+        </Provider>
   )
 };
 
