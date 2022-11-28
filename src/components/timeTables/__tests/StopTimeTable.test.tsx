@@ -5,9 +5,11 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
+// @ts-nocheck
+
 import StopTimeTable from '../StopPlaceTimeInfo';
 
-const estimatedCalls =   [{
+const estimatedCalls = [{
   __typename: 'EstimatedCall',
   realtime: true,
   aimedArrivalTime: '2022-11-28T19:36:00+01:00',
@@ -38,7 +40,7 @@ const estimatedCalls =   [{
       }
   }
 },
-]
+];
 
 
 test('loads and displays greeting', async () => {
