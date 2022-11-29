@@ -16,7 +16,7 @@ export default function Home() {
           <ul className="mt-3">
         <li>
           <Link href="/queueSequentialConcept">
-            <h5>Concept of a request queue.</h5>
+            <h5>Concept of a sequential request queue.</h5>
           </Link>
         </li>
         <li>
