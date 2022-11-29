@@ -23,12 +23,12 @@ const EventTypes = {
 
 interface AddRequestAction {
   type: typeof EventTypes.ADD_REQUEST
-  request: any
+  request: Promise<any>
 };
 
 interface ResetRequestAction {
   type: typeof EventTypes.RESET_REQUESTS
-  request: any
+  request: Promise<any>
 };
 
 type Actions = AddRequestAction | ResetRequestAction;

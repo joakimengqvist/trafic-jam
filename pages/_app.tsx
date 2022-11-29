@@ -1,5 +1,5 @@
-import '../styles/globals.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import React from 'react';
 import type { AppProps } from 'next/app'
 import { ApolloClient, InMemoryCache, createHttpLink, ApolloProvider } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';

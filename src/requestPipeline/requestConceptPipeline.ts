@@ -18,14 +18,12 @@ const EventTypes = {
 
 interface AddRequestAction {
   type: typeof EventTypes.ADD_REQUEST
-  request: any
-  promiseQueue?: Array<PromiseQueueObject>,
+  request: Promise<any>
 };
 
 interface ResetRequestAction {
   type: typeof EventTypes.RESET_REQUESTS
-  request: any
-  promiseQueue?: Array<PromiseQueueObject>,
+  request: Promise<any>
 };
 
 type Actions = AddRequestAction | ResetRequestAction;
@@ -66,7 +64,7 @@ const reducer = (state : StateObject, event : Actions) : StateObject => {
 const firstRequestPromise = new Promise((resolve) => {
   const _timeOut = Math.floor(Math.random() * (15000 - 10000) + 10000);
   setTimeout(() => {
-    resolve(`request completed! Timeout was: ${_timeOut}`);
+    resolve(`request completed - Timeout was ${_timeOut}.`);
   }, _timeOut);
 });
 
@@ -82,7 +80,7 @@ export const useRequestPipeline = () => {
   const requestPromise = new Promise((resolve) => {
     const _timeOut = Math.floor(Math.random() * (15000 - 10000) + 10000);
     setTimeout(() => {
-      resolve(`request completed! Timeout was: ${_timeOut}`);
+      resolve(`request completed - Timeout was ${_timeOut}.`);
     }, _timeOut);
   });
 
