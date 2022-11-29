@@ -8,7 +8,6 @@ const service = createEnturService({
 interface StateObject {
   promiseQueue: Array<PromiseQueueObject>
   promiseCount: number
-  resetCycle: boolean
 }
 
 interface PromiseQueueObject {
@@ -46,19 +45,10 @@ const reducer = (state : StateObject, event : Actions) : StateObject => {
         }
       }
     case EventTypes.RESET_REQUESTS:
-      if (state.promiseCount > 1) {
-        return {
-          ...state,
-          promiseCount: 1,
-          promiseQueue: [{ number: 1, request: event.request}],
-          resetCycle: true,
-        }
-      }
       return {
         ...state,
         promiseCount: 1,
         promiseQueue: [{ number: 1, request: event.request }],
-        resetCycle: false,
       }
     default: {
     return state;
@@ -74,7 +64,6 @@ const firstRequestPromise = new Promise((resolve) => {
 });
 
 const initialState : StateObject = {
-  resetCycle: false,
   promiseCount: 1,
   promiseQueue: [{ number: 1, request: firstRequestPromise}],
 }

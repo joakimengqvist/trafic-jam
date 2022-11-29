@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 interface DepartureComponentProps {
   expectedDeparture: string,
@@ -18,4 +18,4 @@ const ExpectedDeparture = ({ expectedDeparture, aimedDeparture }: DepartureCompo
   }
 };
 
-export default ExpectedDeparture;
+export default memo(ExpectedDeparture);

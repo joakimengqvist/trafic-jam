@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React, { memo } from 'react';
 interface ArrivalComponentProps {
   aimedArrival: string,
   expectedArrival: string,
@@ -18,4 +17,4 @@ const ExpectedArrival = ({ aimedArrival, expectedArrival }: ArrivalComponentProp
   }
 }
 
-export default ExpectedArrival;
+export default memo(ExpectedArrival);

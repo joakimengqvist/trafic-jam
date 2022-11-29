@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useRouter } from 'next/router'
 import { useQuery, gql } from '@apollo/client';
 import StopTimeTable from '../../src/components/timeTables/StopPlaceTimeInfo';
@@ -48,13 +48,19 @@ const Stop = () => {
   const stopId = query.id;
   const dispatch = useDispatch();
 
-  const { loading, data } = useQuery(
+  const { loading, data, startPolling, stopPolling } = useQuery(
     GET_STOP_DATA, {
     variables: { id: `NSR:StopPlace:${stopId}` },
     pollInterval: 2000,
     onCompleted: data => { dispatch({ type: UPDATE_STOP, payload: data.stopPlace})},
     },
   );
+
+  useEffect(() => {
+    startPolling(2000);
+    return () => stopPolling();
+
+  })
 
   const name = useSelector(stopNameSelector);
   const estimatedCalls = useSelector(estimatedCallsSelector);

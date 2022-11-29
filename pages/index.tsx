@@ -11,17 +11,22 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Traffic Jam <span style={{fontSize: '100px'}}>@</span>pp
+          Traffic Jam <span style={{fontSize: '60px'}}>@</span>pp
         </h1>
           <ul className="mt-3">
         <li>
-          <Link href="/queueConcept">
+          <Link href="/queueSequentialConcept">
             <h5>Concept of a request queue.</h5>
           </Link>
         </li>
         <li>
+          <Link href="/queueConcept">
+            <h5>Concept of a Promise request queue.</h5>
+          </Link>
+        </li>
+        <li>
           <Link href="/queueConceptStop">
-            <h5>Concept of a request queue.</h5>
+            <h5>Concept of a Promise request queue with data.</h5>
           </Link>
         </li>
         <li>
